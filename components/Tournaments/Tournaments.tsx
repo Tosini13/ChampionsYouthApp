@@ -8,22 +8,19 @@ import {
 } from "react-native";
 import { useGetTournaments } from "../../graphql/tournaments/getTournaments";
 import { TTournament } from "../../models/tournament";
-import { NavigationStackProp } from "react-navigation-stack";
-import { EScreens } from "../../models/navigation";
+import { MainNavigationStackParamList } from "../../models/navigation";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-type TTournamentsProps = {
-  navigation: NavigationStackProp;
-};
+type TTournamentsProps = {} & NativeStackScreenProps<
+  MainNavigationStackParamList,
+  "Tournament"
+>;
+
 export const Tournaments: React.FC<TTournamentsProps> = ({ navigation }) => {
-  const { loading, data, error } = useGetTournaments();
-  console.log("loading", loading);
-  console.log("data", data);
-  console.log("error", error);
-
+  const { data } = useGetTournaments();
   const handleClickTournament = (tournament: TTournament) => {
-    console.log("clicked", tournament);
-    navigation.push(EScreens.TOURNAMENT, {
-      id: tournament.id,
+    navigation.navigate("Tournament", {
+      tournamentId: tournament.id,
     });
   };
 

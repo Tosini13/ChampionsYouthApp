@@ -1,4 +1,4 @@
-export enum EScreens {
-  TOURNAMENTS = "TOURNAMENTS",
-  TOURNAMENT = "TOURNAMENT",
-}
+export type MainNavigationStackParamList = {
+  Tournament: { tournamentId: string };
+  Tournaments: {};
+};

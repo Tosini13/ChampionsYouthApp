@@ -12,9 +12,7 @@ export default function App() {
   });
   return (
     <ApolloProvider client={client}>
-      <View style={styles.container}>
-        <MainNavigation />
-      </View>
+      <MainNavigation />
     </ApolloProvider>
   );
 }

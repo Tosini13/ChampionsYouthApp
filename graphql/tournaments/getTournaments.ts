@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { Id } from "../../models/global";
 import { TTournament } from "../../models/tournament";
+import { mockTournaments } from "./mock";
 
 export const GET_TOURNAMENTS_QUERY = gql`
   {
@@ -19,5 +20,11 @@ export type TGetTournamentsResponse = {
   };
 };
 
-export const useGetTournaments = () =>
-  useQuery<TGetTournamentsResponse>(GET_TOURNAMENTS_QUERY);
+export const useGetTournaments = (): { data: TGetTournamentsResponse } => ({
+  data: {
+    GetTournaments: {
+      tournaments: mockTournaments,
+    },
+  },
+});
+// useQuery<TGetTournamentsResponse>(GET_TOURNAMENTS_QUERY);
