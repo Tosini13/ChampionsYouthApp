@@ -16,4 +16,11 @@ export type TTournamentsStackNavigation = {
   Tournament: { tournamentId: Id };
 };
 
+export type TTopTabNavigation = {
+  Info: { tournamentId: Id };
+  Teams: { tournamentId: Id };
+  Groups: { tournamentId: Id };
+  PlayOffs: { tournamentId: Id };
+};
+
 export type TNavigation = TDrawerNavigation & TBottomTabNavigation;

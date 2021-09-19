@@ -10,13 +10,17 @@ type THeaderProps = {
   toggleDrawer: () => void;
   goBack?: () => void;
   canGoBack?: boolean;
+  title?: string;
 };
 
 export const Header: React.FC<THeaderProps> = ({
   toggleDrawer,
   goBack,
   canGoBack,
+  title,
 }) => {
+  console.log("title", title);
+
   return (
     <View style={style.container}>
       {goBack && canGoBack ? (
@@ -34,7 +38,7 @@ export const Header: React.FC<THeaderProps> = ({
           onPress={() => console.log("Calendar")}
         />
       )}
-      <Text>My Header</Text>
+      <Text>{title ?? "No Title"}</Text>
       <IconFeather.Button
         name="menu"
         backgroundColor="transparent"
