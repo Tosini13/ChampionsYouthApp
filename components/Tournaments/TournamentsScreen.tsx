@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import React from "react";
 import { TDrawerNavigation } from "../../models/navigation";
-import { StackNavigation } from "../Navigation/StackNavigation";
+import { BottomTabNavigation } from "../Navigation/BottomTabNavigation";
 
 type TTournamentScreenProps = {} & DrawerScreenProps<
   TDrawerNavigation,
@@ -11,5 +11,5 @@ type TTournamentScreenProps = {} & DrawerScreenProps<
 export const TournamentScreen: React.FC<TTournamentScreenProps> = ({
   navigation,
 }) => {
-  return <StackNavigation toggleDrawer={navigation.toggleDrawer} />;
+  return <BottomTabNavigation toggleDrawer={navigation.toggleDrawer} />;
 };

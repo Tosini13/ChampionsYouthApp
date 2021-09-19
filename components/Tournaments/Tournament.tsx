@@ -1,10 +1,10 @@
 import React from "react";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { Text, View } from "react-native";
 import { useGetTournament } from "../../graphql/tournaments/getTournament";
-import { StackNavigationStackParamList } from "../../models/navigation";
-type TTournamentProps = {} & NativeStackScreenProps<
-  StackNavigationStackParamList,
+import { TTournamentsStackNavigation } from "../../models/navigation";
+type TTournamentProps = {} & BottomTabScreenProps<
+  TTournamentsStackNavigation,
   "Tournament"
 >;
 

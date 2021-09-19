@@ -1,11 +1,19 @@
+import { Id } from "./global";
+
 export type TDrawerNavigation = {
-  Tournaments: {};
+  MainTournaments: {};
   CreateTournament: {};
 };
 
-export type StackNavigationStackParamList = {
-  Tournament: { tournamentId: string };
+export type TBottomTabNavigation = {
+  MyTournament: {};
+  FavoritesTournament: {};
   Tournaments: {};
 };
 
-export type TNavigation = TDrawerNavigation & StackNavigationStackParamList;
+export type TTournamentsStackNavigation = {
+  TournamentsList: {};
+  Tournament: { tournamentId: Id };
+};
+
+export type TNavigation = TDrawerNavigation & TBottomTabNavigation;

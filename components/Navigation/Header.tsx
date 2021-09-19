@@ -5,7 +5,6 @@ import { Text, View, StyleSheet } from "react-native";
 import IconFeather from "react-native-vector-icons/Feather";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { TDrawerNavigation, TNavigation } from "../../models/navigation";
 
 type THeaderProps = {
   toggleDrawer: () => void;
