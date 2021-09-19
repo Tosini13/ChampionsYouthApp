@@ -1,9 +1,8 @@
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { Tournaments } from "./components/Tournaments/Tournaments";
-import { MainNavigation } from "./components/Navigation/MainNavigation";
+import { StyleSheet } from "react-native";
+import { DrawerNavigation } from "./components/Navigation/DrawerNavigation";
 
 export default function App() {
   const client = new ApolloClient({
@@ -12,7 +11,9 @@ export default function App() {
   });
   return (
     <ApolloProvider client={client}>
-      <MainNavigation />
+      <NavigationContainer>
+        <DrawerNavigation />
+      </NavigationContainer>
     </ApolloProvider>
   );
 }

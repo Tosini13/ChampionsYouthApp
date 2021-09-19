@@ -8,11 +8,11 @@ import {
 } from "react-native";
 import { useGetTournaments } from "../../graphql/tournaments/getTournaments";
 import { TTournament } from "../../models/tournament";
-import { MainNavigationStackParamList } from "../../models/navigation";
+import { StackNavigationStackParamList } from "../../models/navigation";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 type TTournamentsProps = {} & NativeStackScreenProps<
-  MainNavigationStackParamList,
+  StackNavigationStackParamList,
   "Tournament"
 >;
 
