@@ -7,3 +7,5 @@ export type StackNavigationStackParamList = {
   Tournament: { tournamentId: string };
   Tournaments: {};
 };
+
+export type TNavigation = TDrawerNavigation & StackNavigationStackParamList;
