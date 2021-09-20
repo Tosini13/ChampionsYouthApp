@@ -2,10 +2,13 @@ import React from "react";
 import { Text, View } from "react-native";
 import { useGetTournament } from "../../../graphql/tournaments/getTournament";
 import { format } from "date-fns";
+import { Id } from "../../../models/global";
 
-type TTournamentInfoProps = {};
-export const TournamentInfo: React.FC<TTournamentInfoProps> = ({}) => {
-  const { data } = useGetTournament({ id: "1" });
+type TTournamentInfoProps = { tournamentId: Id };
+export const TournamentInfo: React.FC<TTournamentInfoProps> = ({
+  tournamentId,
+}) => {
+  const { data } = useGetTournament({ id: tournamentId });
   return (
     <View>
       <Text>{data.GetTournament?.name}</Text>

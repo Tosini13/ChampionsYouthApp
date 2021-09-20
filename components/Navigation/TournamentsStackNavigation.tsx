@@ -1,28 +1,42 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Tournaments } from "../Tournaments/Tournaments";
-import { Tournament } from "../Tournament/Tournament";
 import {
   TDrawerNavigation,
   TTournamentsStackNavigation,
 } from "../../models/navigation";
 import { Header } from "./Header";
-import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { BottomTabNavigation } from "./BottomTabNavigation";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import { StackScreenProps } from "@react-navigation/stack";
 import { Id } from "../../models/global";
+import Group from "../Groups/Group";
+import Match from "../Matches/Match";
+import { TopTabNavigation } from "./TopTabNavigation";
 
-type TStackScreenProps = StackScreenProps<TTournamentsStackNavigation>;
+export type TStackScreenProps = StackScreenProps<TTournamentsStackNavigation>;
 
 type TTournamentsStackNavigationProps = {
   toggleDrawer: () => void;
 } & DrawerScreenProps<TDrawerNavigation>;
 export const TournamentsStackNavigation: React.FC<TTournamentsStackNavigationProps> =
-  ({ toggleDrawer, route, navigation: drawerNavigation }) => {
+  ({ toggleDrawer }) => {
     const Stack = createNativeStackNavigator<TTournamentsStackNavigation>();
     return (
-      <Stack.Navigator initialRouteName={"TournamentsList"}>
+      <Stack.Navigator
+        initialRouteName={"TournamentsList"}
+        screenOptions={{
+          header: ({ navigation }) => {
+            return (
+              <Header
+                title={"Tournament NAME"}
+                toggleDrawer={toggleDrawer}
+                goBack={navigation.goBack}
+                canGoBack={navigation.canGoBack()}
+              />
+            );
+          },
+        }}
+      >
         <Stack.Screen
           name={"TournamentsList"}
           children={({ navigation }: TStackScreenProps) => (
@@ -39,22 +53,9 @@ export const TournamentsStackNavigation: React.FC<TTournamentsStackNavigationPro
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name={"Tournament"}
-          component={Tournament}
-          options={{
-            header: ({ navigation }) => {
-              return (
-                <Header
-                  title={route.name}
-                  toggleDrawer={toggleDrawer}
-                  goBack={navigation.goBack}
-                  canGoBack={navigation.canGoBack()}
-                />
-              );
-            },
-          }}
-        />
+        <Stack.Screen name={"Tournament"} component={TopTabNavigation} />
+        <Stack.Screen name={"TournamentGroup"} component={Group} />
+        <Stack.Screen name={"TournamentMatch"} component={Match} />
       </Stack.Navigator>
     );
   };
