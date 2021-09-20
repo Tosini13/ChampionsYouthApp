@@ -19,8 +19,6 @@ export const Header: React.FC<THeaderProps> = ({
   canGoBack,
   title,
 }) => {
-  console.log("title", title);
-
   return (
     <View style={style.container}>
       {goBack && canGoBack ? (

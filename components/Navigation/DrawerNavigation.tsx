@@ -1,9 +1,15 @@
 import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerScreenProps,
+} from "@react-navigation/drawer";
 import { TDrawerNavigation } from "../../models/navigation";
 import { CreateTournament } from "../Tournaments/CreateTournament/CreateTournament";
 import { TournamentScreen } from "../Tournaments/TournamentsScreen";
 import { Header } from "./Header";
+import { TournamentsStackNavigation } from "./TournamentsStackNavigation";
+
+type TDrawerScreenProps = DrawerScreenProps<TDrawerNavigation>;
 
 type TDrawerNavigationProps = {};
 export const DrawerNavigation: React.FC<TDrawerNavigationProps> = ({}) => {
@@ -23,7 +29,13 @@ export const DrawerNavigation: React.FC<TDrawerNavigationProps> = ({}) => {
     >
       <Drawer.Screen
         name="MainTournaments"
-        component={TournamentScreen}
+        children={({ navigation, route }: TDrawerScreenProps) => (
+          <TournamentsStackNavigation
+            toggleDrawer={navigation.toggleDrawer}
+            navigation={navigation}
+            route={route}
+          />
+        )}
         options={{
           headerShown: false,
         }}

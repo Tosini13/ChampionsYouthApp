@@ -1,21 +1,25 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   BottomTabScreenProps,
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
 import { TBottomTabNavigation } from "../../models/navigation";
-import { TournamentStackNavigation } from "./TournamentStackNavigation";
-// import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { Header } from "./Header";
+import { Tournaments } from "../Tournaments/Tournaments";
+import { Id } from "../../models/global";
+import { BottomTabHeaderProps } from "@react-navigation/bottom-tabs/lib/typescript/src/types";
 
 type TBottomTabNavigationProps = {
+  navigateToTournament: (id: Id) => void;
   toggleDrawer: () => void;
 };
 
 type TBottomTabScreenProps = BottomTabScreenProps<TBottomTabNavigation>;
 
 export const BottomTabNavigation: React.FC<TBottomTabNavigationProps> = ({
+  navigateToTournament,
   toggleDrawer,
 }) => {
   const BottomTab = createBottomTabNavigator<TBottomTabNavigation>();
@@ -23,26 +27,19 @@ export const BottomTabNavigation: React.FC<TBottomTabNavigationProps> = ({
     <BottomTab.Navigator
       initialRouteName={"Tournaments"}
       screenOptions={{
-        headerShown: false,
+        header: ({ route }: BottomTabHeaderProps): ReactNode => (
+          <Header title={route.name} toggleDrawer={toggleDrawer} />
+        ),
       }}
     >
       <BottomTab.Screen
         name={"Tournaments"}
-        children={({ navigation, route }: TBottomTabScreenProps) => (
-          <TournamentStackNavigation
-            navigation={navigation}
-            route={route}
-            toggleDrawer={toggleDrawer}
-          />
+        children={({}: TBottomTabScreenProps) => (
+          <Tournaments navigateToTournament={navigateToTournament} />
         )}
         options={{
           tabBarIcon: () => (
-            <FontAwesome.Button
-              name="trophy"
-              backgroundColor="transparent"
-              color="blue"
-              onPress={() => console.log("Trophy")}
-            />
+            <FontAwesome name="trophy" color="blue" size={20} />
           ),
           tabBarActiveTintColor: "tomato",
           tabBarInactiveTintColor: "gray",
@@ -50,41 +47,25 @@ export const BottomTabNavigation: React.FC<TBottomTabNavigationProps> = ({
       />
       <BottomTab.Screen
         name={"MyTournament"}
-        children={({ navigation, route }: TBottomTabScreenProps) => (
-          <TournamentStackNavigation
-            navigation={navigation}
-            route={route}
-            toggleDrawer={toggleDrawer}
-          />
+        children={({}: TBottomTabScreenProps) => (
+          <Tournaments navigateToTournament={navigateToTournament} />
         )}
-        // options={{
-        //   tabBarIcon: () => (
-        //     <MaterialIcons.Button
-        //       name="star"
-        //       backgroundColor="transparent"
-        //       color="blue"
-        //     />
-        //   ),
-        // }}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="star" color="blue" size={20} />
+          ),
+        }}
       />
       <BottomTab.Screen
         name={"FavoritesTournament"}
-        children={({ navigation, route }: TBottomTabScreenProps) => (
-          <TournamentStackNavigation
-            navigation={navigation}
-            route={route}
-            toggleDrawer={toggleDrawer}
-          />
+        children={({}: TBottomTabScreenProps) => (
+          <Tournaments navigateToTournament={navigateToTournament} />
         )}
-        // options={{
-        //   tabBarIcon: () => (
-        //     <MaterialIcons.Button
-        //       name="favorite"
-        //       backgroundColor="transparent"
-        //       color="blue"
-        //     />
-        //   ),
-        // }}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="favorite" color="blue" size={20} />
+          ),
+        }}
       />
     </BottomTab.Navigator>
   );
