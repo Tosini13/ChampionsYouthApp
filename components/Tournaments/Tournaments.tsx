@@ -25,9 +25,6 @@ export const Tournaments: React.FC<TTournamentsProps> = ({
   return (
     <View style={style.container}>
       <View>
-        <Text>Tournaments:</Text>
-      </View>
-      <View>
         <FlatList
           data={data?.GetTournaments.tournaments}
           keyExtractor={(item) => item.id}
@@ -48,7 +45,7 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
-    paddingHorizontal: 5,
+    padding: 5,
   },
   tournament: {
     marginVertical: 3,

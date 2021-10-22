@@ -19,28 +19,31 @@ export const Header: React.FC<THeaderProps> = ({
   canGoBack,
   title,
 }) => {
+  console.log("title", title);
   return (
     <View style={style.container}>
       {goBack && canGoBack ? (
         <IonIcons.Button
           name="arrow-back"
           backgroundColor="transparent"
-          color="blue"
+          color="white"
           onPress={() => goBack()}
         />
       ) : (
         <FontAwesome.Button
           name="calendar"
           backgroundColor="transparent"
-          color="blue"
+          color="white"
           onPress={() => console.log("Calendar")}
         />
       )}
-      <Text>{title ?? "No Title"}</Text>
+      <View>
+        <Text style={style.title}>{title ?? "No Title"}</Text>
+      </View>
       <IconFeather.Button
         name="menu"
         backgroundColor="transparent"
-        color="blue"
+        color="white"
         onPress={() => toggleDrawer()}
       />
     </View>
@@ -49,11 +52,14 @@ export const Header: React.FC<THeaderProps> = ({
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     padding: 3,
+    paddingTop: 28,
+    backgroundColor: "blue",
   },
-  hamburgerButton: {},
+  title: {
+    color: "white",
+  },
 });
