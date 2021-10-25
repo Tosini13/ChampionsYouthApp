@@ -1,8 +1,10 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
 import { Text, View } from "react-native";
-import { useGetTournamentGroupsSummary } from "../../graphql/groups/useGetTournamentGroupsSummary";
+import { useGetTournamentGroupsDetails } from "../../graphql/groups/useGetTournamentGroupsDetails";
 import { TTournamentsStackNavigation } from "../../models/navigation";
+import Loading from "../Global/Loading";
+import MatchesList from "./MatchesList";
 
 type TGroupProps = {} & StackScreenProps<
   TTournamentsStackNavigation,
@@ -10,16 +12,14 @@ type TGroupProps = {} & StackScreenProps<
 >;
 
 const Group: React.FC<TGroupProps> = ({ route }) => {
-  const { data } = useGetTournamentGroupsSummary({
+  const { data } = useGetTournamentGroupsDetails({
     tournamentId: route.params.tournamentId,
     groupId: route.params.groupId,
   });
   const group = data.GetTournament.tournament?.groups[0];
   return (
     <View>
-      <Text>
-        Group: {group?.name} (#{group?.id})
-      </Text>
+      {group?.matches ? <MatchesList matches={group?.matches} /> : <Loading />}
     </View>
   );
 };

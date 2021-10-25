@@ -13,10 +13,15 @@ import { Id } from "../../models/global";
 import Group from "../Groups/Group";
 import Match from "../Matches/Match";
 import { TopTabNavigation } from "./TopTabNavigation";
-import TournamentHeader from "../Tournament/TournamentHeader";
+import TournamentHeader from "../Tournament/Headers/TournamentHeader";
+import TournamentGroupHeader from "../Tournament/Headers/TournamentGroupHeader";
 
 export type TStackScreenProps = StackScreenProps<TTournamentsStackNavigation>;
 
+type TTopTabNavigationProps = {} & StackScreenProps<
+  TTournamentsStackNavigation,
+  "Tournament"
+>;
 type TTournamentsStackNavigationProps = {
   toggleDrawer: () => void;
 } & DrawerScreenProps<TDrawerNavigation>;
@@ -58,7 +63,35 @@ export const TournamentsStackNavigation: React.FC<TTournamentsStackNavigationPro
           }}
         />
         <Stack.Screen name={"Tournament"} component={TopTabNavigation} />
-        <Stack.Screen name={"TournamentGroup"} component={Group} />
+        <Stack.Screen
+          name={"TournamentGroup"}
+          component={Group}
+          options={{
+            header: ({ navigation, route }) => {
+              const params: TTournamentsStackNavigationParams | undefined =
+                route.params;
+              if (params?.tournamentId && params?.groupId) {
+                return (
+                  <TournamentGroupHeader
+                    toggleDrawer={toggleDrawer}
+                    goBack={navigation.goBack}
+                    canGoBack={navigation.canGoBack()}
+                    tournamentId={params?.tournamentId}
+                    groupId={params?.groupId}
+                  />
+                );
+              }
+              return (
+                <TournamentHeader
+                  toggleDrawer={toggleDrawer}
+                  goBack={navigation.goBack}
+                  canGoBack={navigation.canGoBack()}
+                  tournamentId={params?.tournamentId}
+                />
+              );
+            },
+          }}
+        />
         <Stack.Screen name={"TournamentMatch"} component={Match} />
       </Stack.Navigator>
     );
