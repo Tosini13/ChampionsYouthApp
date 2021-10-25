@@ -62,19 +62,21 @@ export const mockTeams: TTeam[] = [
 export const mockMatches: TMatch[] = [
   {
     id: "1",
-    homeTeamId: mockTeams[0].id,
-    awayTeamId: mockTeams[1].id,
+    homeTeam: mockTeams[0],
+    awayTeam: mockTeams[1],
     roundNumber: 1,
     score: {
       home: 1,
       away: 0,
     },
+    dateTime: new Date(),
   },
   {
     id: "2",
-    homeTeamId: mockTeams[2].id,
-    awayTeamId: mockTeams[3].id,
+    homeTeam: mockTeams[2],
+    awayTeam: mockTeams[3],
     roundNumber: 1,
+    dateTime: new Date(),
   },
 ];
 

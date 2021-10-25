@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { useGetTournament } from "../../graphql/tournaments/getTournament";
-import { Id } from "../../models/global";
-import { Header, THeaderProps } from "../Navigation/Header";
+import { useGetTournament } from "../../../graphql/tournaments/getTournament";
+import { Id } from "../../../models/global";
+import { Header, THeaderProps } from "../../Navigation/Header";
 
 type TTournamentHeaderProps = Omit<THeaderProps, "title"> & {
   tournamentId?: Id;
