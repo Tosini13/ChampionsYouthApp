@@ -6,7 +6,7 @@ import IconFeather from "react-native-vector-icons/Feather";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-type THeaderProps = {
+export type THeaderProps = {
   toggleDrawer: () => void;
   goBack?: () => void;
   canGoBack?: boolean;
@@ -19,7 +19,6 @@ export const Header: React.FC<THeaderProps> = ({
   canGoBack,
   title,
 }) => {
-  console.log("title", title);
   return (
     <View style={style.container}>
       {goBack && canGoBack ? (

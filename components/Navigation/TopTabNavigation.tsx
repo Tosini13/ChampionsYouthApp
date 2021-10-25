@@ -21,8 +21,6 @@ export const TopTabNavigation: React.FC<TTopTabNavigationProps> = ({
   route,
   navigation,
 }) => {
-  console.log("route", route);
-
   const navigateToGroup = (groupId: Id) =>
     navigation.navigate("TournamentGroup", {
       tournamentId: route.params.tournamentId,

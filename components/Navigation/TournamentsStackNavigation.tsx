@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   TDrawerNavigation,
   TTournamentsStackNavigation,
+  TTournamentsStackNavigationParams,
 } from "../../models/navigation";
 import { Header } from "./Header";
 import { BottomTabNavigation } from "./BottomTabNavigation";
@@ -12,6 +13,7 @@ import { Id } from "../../models/global";
 import Group from "../Groups/Group";
 import Match from "../Matches/Match";
 import { TopTabNavigation } from "./TopTabNavigation";
+import TournamentHeader from "../Tournament/TournamentHeader";
 
 export type TStackScreenProps = StackScreenProps<TTournamentsStackNavigation>;
 
@@ -25,13 +27,15 @@ export const TournamentsStackNavigation: React.FC<TTournamentsStackNavigationPro
       <Stack.Navigator
         initialRouteName={"TournamentsList"}
         screenOptions={{
-          header: ({ navigation }) => {
+          header: ({ navigation, route }) => {
+            const params: TTournamentsStackNavigationParams | undefined =
+              route.params;
             return (
-              <Header
-                title={"Tournament NAME"}
+              <TournamentHeader
                 toggleDrawer={toggleDrawer}
                 goBack={navigation.goBack}
                 canGoBack={navigation.canGoBack()}
+                tournamentId={params?.tournamentId}
               />
             );
           },
