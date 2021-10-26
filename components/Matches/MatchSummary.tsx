@@ -2,20 +2,19 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { TMatch } from "../../models/match";
 import { format } from "date-fns";
+import { DATE_TIME_FORMAT_MATCH } from "../../models/global";
 
-const DATE_FORMAT_MATCH = "HH:mm dd-MM-yyyy";
-
-type TMatchProps = {
+type TMatchSummaryProps = {
   match: TMatch;
 };
 
-const Match: React.FC<TMatchProps> = ({ match }) => {
+const MatchSummary: React.FC<TMatchSummaryProps> = ({ match }) => {
   return (
     <View style={style.container}>
       <View style={style.header}>
         <Text style={style.headerText}>Round {match.roundNumber}</Text>
         <Text style={style.headerText}>
-          {match.dateTime && format(match.dateTime, DATE_FORMAT_MATCH)}
+          {match.dateTime && format(match.dateTime, DATE_TIME_FORMAT_MATCH)}
         </Text>
       </View>
       <View style={style.teamsContainer}>
@@ -51,7 +50,7 @@ const Match: React.FC<TMatchProps> = ({ match }) => {
   );
 };
 
-export default Match;
+export default MatchSummary;
 
 const style = StyleSheet.create({
   container: {

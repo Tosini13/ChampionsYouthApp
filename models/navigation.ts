@@ -14,7 +14,7 @@ export type TBottomTabNavigation = {
 export type TTournamentsStackNavigation = {
   TournamentsList: {};
   Tournament: { tournamentId: Id };
-  TournamentMatch: { tournamentId: Id; matchId: Id };
+  TournamentGroupMatch: { tournamentId: Id; matchId: Id; groupId: Id };
   TournamentGroup: { tournamentId: Id; groupId: Id };
 };
 

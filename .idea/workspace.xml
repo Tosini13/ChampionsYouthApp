@@ -6,10 +6,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84ad7584-55e2-497a-b1ff-009113d24cff" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/components/Navigation/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navigation/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Navigation/TournamentsStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navigation/TournamentsStackNavigation.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="84ad7584-55e2-497a-b1ff-009113d24cff" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +19,6 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="195" />
-    <option name="y" value="1" />
     <option name="width" value="980" />
     <option name="height" value="760" />
   </component>

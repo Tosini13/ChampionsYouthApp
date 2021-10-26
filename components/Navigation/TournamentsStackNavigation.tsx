@@ -11,7 +11,7 @@ import { DrawerScreenProps } from "@react-navigation/drawer";
 import { StackScreenProps } from "@react-navigation/stack";
 import { Id } from "../../models/global";
 import Group from "../Groups/Group";
-import Match from "../Matches/Match";
+import GroupMatch from "../Matches/GroupMatch/GroupMatch";
 import { TopTabNavigation } from "./TopTabNavigation";
 import TournamentHeader from "../Tournament/Headers/TournamentHeader";
 import TournamentGroupHeader from "../Tournament/Headers/TournamentGroupHeader";
@@ -92,7 +92,7 @@ export const TournamentsStackNavigation: React.FC<TTournamentsStackNavigationPro
             },
           }}
         />
-        <Stack.Screen name={"TournamentMatch"} component={Match} />
+        <Stack.Screen name={"TournamentGroupMatch"} component={GroupMatch} />
       </Stack.Navigator>
     );
   };
